@@ -1,0 +1,12 @@
+---
+# defaults file for webservers
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  remote_user: root
+  roles:
+   - install_jdk
+   - install_maven
+   - install_tomcat
+   - git
+   - build_webapp   

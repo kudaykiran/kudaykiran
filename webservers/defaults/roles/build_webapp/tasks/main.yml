@@ -1,0 +1,14 @@
+---
+# tasks file for build_webapp
+
+  - name: Clone a project repository into /home/vagrant
+    git:
+      repo: https://ansible-story@dev.azure.com/ansible-story/springbootapp_pune/_git/springbootapp_pune
+      version: master
+      dest: /home/vagrant/springbootapp_pune
+
+  - name: Go to the project directory and build package
+    shell: |
+      cd /home/vagrant/springbootapp_pune/flight-tracking
+      mvn clean package
+      cp /home/vagrant/springbootapp_pune/flight-tracking/target/flight-tracking-web.war  /opt/tomcat/webapps/
